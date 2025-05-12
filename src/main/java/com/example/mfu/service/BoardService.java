@@ -100,5 +100,9 @@ public class BoardService {
     	boardMapper.deleteBoardFiles(boardNo);
         boardMapper.deleteBoard(boardNo);
     }
+    public void deleteFile(int boardFileNo) {
+    	 boardFileMapper.deleteFile(boardFileNo);
+    	 log.info("BoardFileMapper.deleteFile() 호출됨 - 번호: {}", boardFileNo);
+    }
 
 }

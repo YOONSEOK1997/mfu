@@ -11,9 +11,18 @@
 		)
 	</insert>
 	<select id="selectBoardFileList"
-		resultType="com.example.mfu.dto.BoardFile">
-		SELECT * FROM boardfile WHERE board_no = #{boardNo}
-	</select>
-
+	resultType="com.example.mfu.dto.BoardFile">
+	SELECT 
+		boardfile_no AS boardFileNo,
+		board_no AS boardNo,
+		filename AS fileName,
+		filetype AS fileType
+	FROM boardfile
+	WHERE board_no = #{boardNo}
+</select>
+	<delete id="deleteFile" parameterType="int">
+		DELETE FROM boardfile
+		WHERE boardfile_no = #{boardFileNo}
+	</delete>
 </mapper>
 

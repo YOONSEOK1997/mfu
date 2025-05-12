@@ -25,13 +25,21 @@
 
 				<h5 class="mt-4">📎 첨부파일</h5>
 				<ul class="list-group list-group-flush">
-					<c:forEach var="file" items="${fileList}">
-						<li class="list-group-item"><a
-							href="${pageContext.request.contextPath}/upload/${file.fileName}"
-							download="${file.fileName}" class="text-decoration-none">
-								${file.fileName} </a></li>
-					</c:forEach>
-				</ul>
+    <c:forEach var="file" items="${fileList}">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="${pageContext.request.contextPath}/upload/${file.fileName}" 
+               download="${file.fileName}" class="text-decoration-none">
+                ${file.fileName}
+            </a>
+            <form method="post" action="${pageContext.request.contextPath}/deleteFile" class="d-inline mb-0">
+                <input type="hidden" name="boardFileNo" value="${file.boardFileNo}" />
+                <input type="hidden" name="boardNo" value="${board.boardNo}" />
+                <button type="submit" class="btn btn-sm btn-outline-danger"
+                        onclick="return confirm('이 파일을 삭제하시겠습니까?')">삭제</button>
+            </form>
+        </li>
+    </c:forEach>
+</ul>
 
 				<div class="mt-4 d-flex gap-2">
 					<form method="get"

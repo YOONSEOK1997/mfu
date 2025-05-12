@@ -18,23 +18,25 @@
 		resultType="com.example.mfu.dto.Board">
 		SELECT board_no AS boardNo ,
 		board_title AS boardTitle
-		FROM board
+		FROM
+		board
 	</select>
-	<select id="selectBoardOne" resultType="com.example.mfu.dto.Board">
-    SELECT board_no AS boardNo,
-    	   board_title AS boardTitle
-     FROM board WHERE board_no = #{boardNo}
-</select>
+	<select id="selectBoardOne"
+		resultType="com.example.mfu.dto.Board">
+		SELECT board_no AS boardNo,
+		board_title AS boardTitle
+		FROM board WHERE board_no = #{boardNo}
+	</select>
 	<update id="updateBoard">
-    UPDATE board
-    SET board_title = #{boardTitle}
-    WHERE board_no = #{boardNo}
-</update>
-<delete id="deleteBoardFiles">
-    DELETE FROM boardfile WHERE board_no = #{boardNo}
-</delete>
-<delete id="deleteBoard">
-    DELETE FROM board WHERE board_no = #{boardNo}
-</delete>
-	
+		UPDATE board
+		SET board_title = #{boardTitle}
+		WHERE board_no = #{boardNo}
+	</update>
+	<delete id="deleteBoardFiles">
+		DELETE FROM boardfile WHERE board_no = #{boardNo}
+	</delete>
+	<delete id="deleteBoard">
+		DELETE FROM board WHERE board_no = #{boardNo}
+	</delete>
+
 </mapper>
